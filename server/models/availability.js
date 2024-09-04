@@ -4,11 +4,11 @@ const availabilitySchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
   availability: [
     {
-      day: { type: string, required: true },
+      day: { type: String, required: true },
       slots: [
         {
-          start: { type: string, required: true },
-          end: { type: string, required: true },
+          start: { type: String, required: true },
+          end: { type: String, required: true },
         },
       ],
     },
