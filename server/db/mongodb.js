@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
-const connectionUrl = require("../config/Keys");
 
 const connectMongodb = async () => {
   try {
-    await mongoose.connect(connectionUrl);
+    await mongoose.connect(process.env.CONNECTION_URL);
     console.log("Database connect successfully");
   } catch (error) {
     console.log(error.message);
     // process.exit(1);
+    console.log(error);
   }
 };
 

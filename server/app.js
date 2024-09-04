@@ -6,8 +6,6 @@ const connectMongodb = require("./db/mongodb");
 
 const app = express();
 
-console.log(process.env.CONNECTION_URL);
-
 connectMongodb();
 
 module.exports = app;
