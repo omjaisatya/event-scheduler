@@ -1,5 +1,29 @@
 const Session = require("../models/session");
 const Availability = require("../models/availability");
+const nodemailer = require("nodemailer");
+const { senderEmail, emailPassword } = require("../config/Keys");
+
+const sendNotification = async (attendees, subject, text) => {
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    service: "gmail",
+    auth: {
+      user: senderEmail,
+      pass: emailPassword,
+    },
+  });
+
+  for (const attendee of attendees) {
+    await transporter.sendMail({
+      from: senderEmail,
+      to: attendee.email,
+      subject,
+      text,
+    });
+  }
+};
 
 const isSlotAvailable = async (userId, start, end) => {
   const availability = await Availability.findOne({ user: userId });
@@ -46,6 +70,12 @@ const createSession = async (req, res) => {
       attendees,
     });
     await newSession.save();
+    await sendNotification(
+      attendees,
+      "New Session Scheduled",
+      `Your session is scheduled from ${start} to ${end}.`
+    );
+
     res.status(201).json({ message: "Session created" });
   } catch (err) {
     res.status(500).json({ error: err.message });

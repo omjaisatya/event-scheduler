@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const sessionSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.ObjectId, ref: "User", require: true },
-  start: { type: Date, require: true },
-  end: { type: Date, require: true },
+  user: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
+  start: { type: Date, required: true },
+  end: { type: Date, required: true },
   duration: { type: Number, required: true },
   attendees: [
     {
