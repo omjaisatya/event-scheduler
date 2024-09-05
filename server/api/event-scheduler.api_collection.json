@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "ee6a7667-885d-4f92-af79-b8bb0f487f3b",
+		"name": "event-scheduler",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28297222"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/availability/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"66d8a94b02dceed05b3d36df\",\r\n    \"availability\": [\r\n    {\r\n      \"day\": \"Monday\",\r\n      \"slots\": [\r\n        {\r\n          \"start\": \"09:00\",\r\n          \"end\": \"10:00\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/availability/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"availability",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/availability/update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"66d89cdfe467f3d6c4508790\",\r\n    \"availability\": [\r\n    {\r\n      \"day\": \"Monday\",\r\n      \"slots\": [\r\n        {\r\n          \"start\": \"09:00\",\r\n          \"end\": \"12:00\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/availability/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"availability",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/availability/delete/66d89cdfe467f3d6c4508790",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/availability/delete/66d89cdfe467f3d6c4508790",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"availability",
+						"delete",
+						"66d89cdfe467f3d6c4508790"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/users/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"test1@ex.com\",\r\n    \"password\":\"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/users/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"test1@ex.com\",\r\n    \"password\":\"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/users/preferences",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"66d8a94b02dceed05b3d36df\",\r\n  \"notificationPreferences\": {\r\n    \"email\": true,\r\n    \"sms\": true\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users/preferences",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"preferences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/sessions/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"66d8a94b02dceed05b3d36df\",\r\n    \"start\":\"2024-08-07T09:00:00\",\r\n    \"end\":\"2024-08-07T10:00:00\",\r\n    \"duration\":60,\r\n    \"attendees\":\r\n    {\r\n      \"name\": \"John Doe\",\r\n      \"email\": \"alwaysrocks451256@gmail.com\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/sessions/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/sessions/user/66d8a94b02dceed05b3d36df",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/sessions/user/66d8a94b02dceed05b3d36df",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"user",
+						"66d8a94b02dceed05b3d36df"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/sessions/update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sessionId\":\"66d978d338fd8017e3df5be0\",\r\n    \"newStart\":\"2024-08-07T09:00:00Z\",\r\n    \"newEnd\":\"2024-08-07T09:00:00Z\",\r\n    \"newDuration\":\"30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/sessions/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/sessions/cancel/66d978d338fd8017e3df5be0",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/sessions/cancel/66d978d338fd8017e3df5be0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"cancel",
+						"66d978d338fd8017e3df5be0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
