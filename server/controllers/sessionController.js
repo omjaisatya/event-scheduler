@@ -8,7 +8,7 @@ const sendNotification = async (attendees, subject, text) => {
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
-    service: "gmail",
+    // service: "gmail",
     auth: {
       user: senderEmail,
       pass: emailPassword,
@@ -27,7 +27,12 @@ const sendNotification = async (attendees, subject, text) => {
 
 const isSlotAvailable = async (userId, start, end) => {
   const availability = await Availability.findOne({ user: userId });
-  if (!availability) return false;
+  // if (!availability) return false;
+
+  if (!availability) {
+    console.log("No availability found for user:", userId);
+    return false;
+  }
 
   return availability.availability.some((dayAvailability) => {
     return dayAvailability.slots.some((slot) => {
@@ -35,6 +40,10 @@ const isSlotAvailable = async (userId, start, end) => {
         `${new Date(start).toDateString()} ${slot.start}`
       );
       const slotEnd = new Date(`${new Date(start).toDateString()} ${slot.end}`);
+
+      console.log("slot End", slotEnd);
+      console.log("slot  Start", slotStart);
+
       return start >= slotStart && end <= slotEnd;
     });
   });
@@ -78,7 +87,8 @@ const createSession = async (req, res) => {
 
     res.status(201).json({ message: "Session created" });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Error creating session:", err);
+    // res.status(500).json({ error: err.message });
   }
 };
 
