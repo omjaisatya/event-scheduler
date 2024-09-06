@@ -6,7 +6,7 @@ dotenv.config();
 const connectMongodb = require("./db/mongodb");
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
 connectMongodb();
